@@ -1,0 +1,47 @@
+[data]
+lob_path = "data/binance_btcusdt_l2.parquet"
+trades_path = "data/binance_btcusdt_trades.parquet"
+format = "parquet"
+exchange_style = "binance"
+symbol = "BTCUSDT"
+# start_ts_ns = 1672531200000000000
+# end_ts_ns = 1672617600000000000
+
+[fees]
+maker_bps = -1.0
+taker_bps = 5.0
+funding_bps_per_8h = 1.0
+derivatives = false
+
+[latency]
+feed_latency_ms = 5.0
+order_latency_ms = 15.0
+jitter_ms = 2.0
+seed = 42
+
+[strategy]
+name = "twosided_mm"
+
+[strategy.params]
+inventory_target = 0.0
+quote_width_bps = 4.0
+imbalance_threshold = 0.0
+cancel_cadence_ms = 1000
+max_orders_per_minute = 120
+order_size = 0.001
+
+[backtest]
+seed = 123
+output_dir = "outputs/example"
+export_trades = true
+export_pnl = true
+export_report = true
+
+[sweep]
+mode = "grid"
+
+[sweep.param_grid]
+quote_width_bps = [3.0, 4.0, 5.0]
+order_size = [0.001, 0.002]
+max_orders_per_minute = [60, 120]
+

@@ -1,0 +1,9 @@
+hftbacktest
+polars
+pyarrow
+numpy
+numba
+pandas
+typer[all]
+pydantic
+
